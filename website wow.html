@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Year 10 Health Flashcards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #f97373;
+      --success: #4ade80;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.75);
+      --radius-lg: 1.5rem;
+      --radius-full: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    h1 span.badge {
+      font-size: 0.68em;
+      padding: 0.15rem 0.7rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .select-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    select {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.9rem;
+      outline: none;
+      appearance: none;
+      position: relative;
+      cursor: pointer;
+    }
+
+    select:focus {
+      box-shadow: 0 0 0 1px var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .select-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .select-wrapper::after {
+      content: "▾";
+      position: absolute;
+      right: 0.7rem;
+      pointer-events: none;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    button {
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.93);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.08s ease, box-shadow 0.08s ease,
+        background 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      border-color: transparent;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    button.secondary {
+      border-color: var(--border-subtle);
+    }
+
+    button:active {
+      transform: scale(0.97);
+      box-shadow: none;
+    }
+
+    button.primary:hover {
+      filter: brightness(1.07);
+    }
+
+    button.secondary:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 1.2rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 780px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-wrapper {
+      position: relative;
+    }
+
+    .hint {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.95rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      z-index: 2;
+      opacity: 0.85;
+    }
+
+    .hint span.key {
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.05rem 0.25rem;
+      font-size: 0.7rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 50%);
+      border-radius: 1.7rem;
+      padding: 1.4rem 1.6rem 1.6rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      padding: 0.18rem 0.65rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .pill span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .answer-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .answer {
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: #e5e7eb;
+    }
+
+    .answer.hidden {
+      filter: blur(6px);
+      opacity: 0.4;
+    }
+
+    .answer-placeholder {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .card-footer {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .progress {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .progress strong {
+      font-size: 0.95rem;
+      color: #f9fafb;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      justify-content: flex-end;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.05rem 0.55rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .side-panel {
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), #020617);
+      border-radius: 1.7rem;
+      padding: 1rem 1.1rem 1.1rem;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .side-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .side-header-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .side-header-title span.icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .stat {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .keyline {
+      border-top: 1px solid rgba(51, 65, 85, 0.85);
+      margin: 0.1rem 0 0.15rem;
+    }
+
+    .side-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 0.4rem;
+    }
+
+    .hint-bottom {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .pill-small {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.08rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-left: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="title-row">
+        <h1>
+          Year 10 Health Flashcards
+          <span class="badge">VIC · S2 Exam</span>
+        </h1>
+      </div>
+      <p class="subtitle">
+        Click the card to show or hide the answer. Use the topic filter or shuffle
+        to mix things up. All cards are based on your exam checklist.
+      </p>
+
+      <div class="controls-row">
+        <div class="select-group">
+          <label for="topicFilter">Topic filter:</label>
+          <div class="select-wrapper">
+            <select id="topicFilter">
+              <option value="all">All topics</option>
+              <option value="Dimensions">AOS1 · Dimensions</option>
+              <option value="Prerequisites">AOS1 · Prerequisites</option>
+              <option value="Health Status">AOS1 · Health status</option>
+              <option value="Sociocultural">AOS1 · Sociocultural factors</option>
+              <option value="Sexuality">AOS1 · Sexuality & fertilisation</option>
+              <option value="Relationships">AOS1 · Consent & relationships</option>
+              <option value="Alcohol & Drugs">AOS1 · Alcohol & drugs</option>
+              <option value="Macronutrients">AOS2 · Macronutrients</option>
+              <option value="Minerals & Vitamins">AOS2 · Minerals & vitamins</option>
+              <option value="Nutritional Imbalances">AOS2 · Nutritional imbalances</option>
+              <option value="Food Selection Models">AOS2 · Food selection models</option>
+              <option value="Health Expo">AOS3 · Variables & links</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="secondary" id="prevBtn" type="button">◀ Prev</button>
+          <button class="secondary" id="nextBtn" type="button">Next ▶</button>
+          <button class="primary" id="shuffleBtn" type="button">🔀 Shuffle</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card-wrapper">
+        <div class="hint">
+          <span class="key">Space</span>
+          <span>flip</span>
+        </div>
+        <article class="card" id="card">
+          <div class="card-inner">
+            <div class="pill">
+              <span class="dot"></span>
+              <span id="cardTopic">Topic</span>
+            </div>
+            <div class="question" id="questionText">
+              Loading question...
+            </div>
+            <div>
+              <div class="answer-label">
+                Answer
+              </div>
+              <div class="answer hidden" id="answerText"></div>
+              <div class="answer-placeholder" id="placeholderText">
+                Click the card or press Space to reveal the answer.
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="progress">
+              <strong id="cardIndex">1</strong>
+              <span id="cardTotal">/ 1 cards</span>
+            </div>
+            <div class="tags" id="tagList"></div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="side-panel">
+        <div class="side-header">
+          <div class="side-header-title">
+            <span class="icon">📚</span>
+            Study helper
+          </div>
+          <div class="stat">
+            Total cards: <strong id="totalCountStat">0</strong>
+          </div>
+        </div>
+        <div class="keyline"></div>
+
+        <div>
+          <div class="side-section-title">Quick tips</div>
+          <ul class="list">
+            <li>Try to answer out loud before flipping the card.</li>
+            <li>Group similar topics (e.g. all sociocultural factors) and explain them together.</li>
+            <li>Link each answer to a health dimension or indicator of health where you can.</li>
+          </ul>
+          <p class="hint-bottom">
+            Exam verbs to watch:
+            <span class="pill-small">define</span>
+            <span class="pill-small">describe</span>
+            <span class="pill-small">explain</span>
+            <span class="pill-small">analyse</span>
+            <span class="pill-small">evaluate</span>
+          </p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const cards = [
+      // ───────────────────────────
+      // AOS 1 – Dimensions
+      // ───────────────────────────
+      {
+        question: "What are the five dimensions of health and wellbeing?",
+        answer: "Physical, Mental, Social, Emotional, Spiritual.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define physical health and wellbeing.",
+        answer: "The functioning of the body and its systems, including the ability to perform daily tasks.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define mental health and wellbeing.",
+        answer: "Relates to the state of a person’s mind, including the ability to think and process information and cope with stress.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define social health and wellbeing.",
+        answer: "Ability to form meaningful and satisfying relationships and adapt to different social situations.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define emotional health and wellbeing.",
+        answer: "Ability to recognise, understand and effectively respond to emotions.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define spiritual health and wellbeing.",
+        answer: "Relates to ideas, beliefs, values and ethics, and a sense of purpose, meaning and belonging.",
+        tags: ["Dimensions", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Prerequisites
+      // ───────────────────────────
+      {
+        question: "List the eight prerequisites of health and wellbeing.",
+        answer: "Peace, Shelter, Equity, Education, Income, Social justice, Sustainable resources, Stable ecosystem.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+      {
+        question: "Explain how education supports optimal health and wellbeing.",
+        answer: "Education increases health literacy and job opportunities, supporting income, access to healthcare and better decision making.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+      {
+        question: "Explain how income promotes health and wellbeing.",
+        answer: "Income enables access to nutritious food, healthcare, transport and safe housing, improving physical and mental health.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+      {
+        question: "Explain how peace supports health and wellbeing.",
+        answer: "Peace reduces risk of injury and death from conflict and lowers stress and anxiety, improving physical and mental health.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+      {
+        question: "How do sustainable resources support health and wellbeing?",
+        answer: "They ensure ongoing access to food, water and energy for current and future generations, supporting physical health and reduced stress.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Health status
+      // ───────────────────────────
+      {
+        question: "Define mortality.",
+        answer: "The number of deaths in a population in a given time.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "Define morbidity.",
+        answer: "The level of illness, disease or injury in a population.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "Define incidence.",
+        answer: "The number of new cases of a condition in a given time.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "Define prevalence.",
+        answer: "The total number of existing cases of a condition at a given time.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "What is burden of disease measured in?",
+        answer: "Disability Adjusted Life Years (DALYs), a combination of years of life lost and years lived with disability.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "What is self-assessed health status?",
+        answer: "An overall measure based on a person’s own perception of their health.",
+        tags: ["Health Status", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Sociocultural factors
+      // ───────────────────────────
+      {
+        question: "Name five sociocultural factors that influence youth health and wellbeing.",
+        answer: "Peer groups, Family, Education, Income, Health literacy.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "How can peer groups negatively influence youth health and wellbeing?",
+        answer: "Peers may encourage risky behaviours like alcohol use, smoking or unsafe driving, increasing morbidity and injury.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "How does family influence health and wellbeing?",
+        answer: "Family provides support, role modelling and rules that shape behaviours such as diet, activity and help-seeking.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "Explain how health literacy can affect health.",
+        answer: "Higher health literacy means a person can access, understand and use health information to make healthier choices.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Sexuality & fertilisation
+      // ───────────────────────────
+      {
+        question: "Outline the basic process of fertilisation.",
+        answer: "A sperm cell penetrates an ovum, and their genetic material combines to form a zygote.",
+        tags: ["Sexuality", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Consent & relationships
+      // ───────────────────────────
+      {
+        question: "List the characteristics of a respectful relationship.",
+        answer: "Respect, Trust, Honesty, Loyalty, Empathy, Safety, Equality.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "How does equality in a relationship support health and wellbeing?",
+        answer: "Both people feel valued and heard, which improves emotional and mental health and reduces stress.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "How does safety in a relationship link to health and wellbeing?",
+        answer: "Physical and emotional safety reduces risk of injury and lowers anxiety and fear.",
+        tags: ["Relationships", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Alcohol and drugs
+      // ───────────────────────────
+      {
+        question: "What are the three main types of drugs by effect on the CNS?",
+        answer: "Stimulants, Depressants, Hallucinogens.",
+        tags: ["Alcohol & Drugs", "AOS1"]
+      },
+      {
+        question: "Give an example of a depressant and its short term impact.",
+        answer: "Alcohol – slows reaction time and impairs judgement, increasing risk of accidents and injury.",
+        tags: ["Alcohol & Drugs", "AOS1"]
+      },
+      {
+        question: "How can alcohol use affect an indicator of health status?",
+        answer: "Increases incidence and mortality from road trauma and liver disease, contributing to the burden of disease.",
+        tags: ["Alcohol & Drugs", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 2 – Macronutrients
+      // ───────────────────────────
+      {
+        question: "What is the main function of carbohydrates?",
+        answer: "To provide the body with energy, especially for daily activities and brain function.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "What is the function of fibre?",
+        answer: "Adds bulk to faeces, helps regulate bowel movements and reduces risk of constipation.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "What is the main function of protein?",
+        answer: "Growth, maintenance and repair of body tissues, and can be used as a secondary energy source.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "What is the function of fats?",
+        answer: "Provide a concentrated source of energy, protect organs, insulate the body and form cell membranes.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Name two food sources of unsaturated fats.",
+        answer: "Avocado, nuts, seeds, olive oil or oily fish such as salmon.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Name two food sources of saturated fats.",
+        answer: "Butter, fatty cuts of meat, full cream milk, cheese or deep-fried foods.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+
+      // ───────────────────────────
+      // AOS 2 – Minerals & vitamins
+      // ───────────────────────────
+      {
+        question: "What is the function of iron in the body?",
+        answer: "Forms haemoglobin in red blood cells so oxygen can be transported around the body.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "List two food sources of iron.",
+        answer: "Red meat, beans, lentils, spinach or fortified cereals.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "What is the function of folate?",
+        answer: "Needed for DNA synthesis and cell division, important for growth and development.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Name two food sources of folate.",
+        answer: "Green leafy vegetables, citrus fruits, legumes and fortified breads or cereals.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "What is the function of vitamin D?",
+        answer: "Helps the body absorb calcium from the intestine, supporting bone health.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "What is the function of vitamin C?",
+        answer: "Important for collagen formation, wound healing and immune system function.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+
+      // ───────────────────────────
+      // AOS 2 – Nutritional imbalances
+      // ───────────────────────────
+      {
+        question: "Short term impacts of high sodium intake?",
+        answer: "Can cause high blood pressure, fluid retention and increased thirst.",
+        tags: ["Nutritional Imbalances", "AOS2"]
+      },
+      {
+        question: "Long term impacts of high sodium intake?",
+        answer: "Increases risk of hypertension, heart attack and stroke (cardiovascular disease).",
+        tags: ["Nutritional Imbalances", "AOS2"]
+      },
+      {
+        question: "Long term impact of high saturated fat intake?",
+        answer: "Raises LDL cholesterol, increases risk of atherosclerosis and coronary heart disease.",
+        tags: ["Nutritional Imbalances", "AOS2"]
+      },
+      {
+        question: "How can family as a sociocultural factor influence diet?",
+        answer: "Family controls food availability and role models eating patterns, which can encourage healthy or unhealthy choices.",
+        tags: ["Nutritional Imbalances", "AOS2"]
+      },
+      {
+        question: "Give two examples of lifestyle diseases linked to poor diet.",
+        answer: "Cardiovascular disease and coronary heart disease.",
+        tags: ["Nutritional Imbalances", "AOS2"]
+      },
+
+      // ───────────────────────────
+      // AOS 2 – Food selection models
+      // ───────────────────────────
+      {
+        question: "What is the aim of the Australian Guide to Healthy Eating (AGHE)?",
+        answer: "To show the proportions of the five food groups needed each day for a balanced diet and to help prevent diet related diseases.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+      {
+        question: "Name the five food groups shown in the AGHE.",
+        answer: "Vegetables and legumes, Fruit, Grain (cereal) foods, Lean meats and alternatives, Milk, yoghurt, cheese and alternatives.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+      {
+        question: "How does the AGHE help address lifestyle diseases?",
+        answer: "Encourages high intake of plant foods and limits discretionary foods, helping reduce obesity and cardiovascular disease risk.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+      {
+        question: "What is the aim of the Health Star Rating system?",
+        answer: "To provide a quick way to compare the overall nutritional profile of packaged foods using a 0.5 to 5 star rating.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+      {
+        question: "Give one strength of the Health Star Rating system.",
+        answer: "Easy and fast to compare similar packaged foods and choose the healthier option.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+      {
+        question: "Give one weakness of the Health Star Rating system.",
+        answer: "Only appears on some packaged foods and does not always reflect whole diet quality.",
+        tags: ["Food Selection Models", "AOS2"]
+      },
+
+      // ───────────────────────────
+      // AOS 3 – Health Expo
+      // ───────────────────────────
+      {
+        question: "Define independent variable in an experiment.",
+        answer: "The variable that is changed or controlled by the researcher to see its effect.",
+        tags: ["Health Expo", "AOS3"]
+      },
+      {
+        question: "Define dependent variable in an experiment.",
+        answer: "The variable that is measured in response to changes in the independent variable.",
+        tags: ["Health Expo", "AOS3"]
+      },
+      {
+        question: "How could a change in physical activity (independent variable) impact a dimension of health and wellbeing?",
+        answer: "Increased physical activity can improve physical health and wellbeing by strengthening the heart and muscles.",
+        tags: ["Health Expo", "AOS3"]
+      },
+      {
+        question: "How could a change in diet impact an indicator of health status?",
+        answer: "Improved diet can lower incidence and prevalence of obesity and cardiovascular disease, reducing burden of disease.",
+        tags: ["Health Expo", "AOS3"]
+      }
+    ];
+
+    let filteredCards = [...cards];
+    let currentIndex = 0;
+    let answerShown = false;
+
+    const cardEl = document.getElementById("card");
+    const questionTextEl = document.getElementById("questionText");
+    const answerTextEl = document.getElementById("answerText");
+    const placeholderTextEl = document.getElementById("placeholderText");
+    const cardTopicEl = document.getElementById("cardTopic");
+    const tagListEl = document.getElementById("tagList");
+    const cardIndexEl = document.getElementById("cardIndex");
+    const cardTotalEl = document.getElementById("cardTotal");
+    const totalCountStatEl = document.getElementById("totalCountStat");
+    const topicFilterEl = document.getElementById("topicFilter");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+
+    function renderCard() {
+      if (filteredCards.length === 0) {
+        questionTextEl.textContent = "No cards found for this topic.";
+        answerTextEl.textContent = "";
+        answerTextEl.classList.add("hidden");
+        placeholderTextEl.textContent = "Change the topic filter to see cards.";
+        cardTopicEl.textContent = "No cards";
+        tagListEl.innerHTML = "";
+        cardIndexEl.textContent = "0";
+        cardTotalEl.textContent = "/ 0 cards";
+        return;
+      }
+
+      const card = filteredCards[currentIndex];
+      questionTextEl.textContent = card.question;
+      answerTextEl.textContent = card.answer;
+
+      if (answerShown) {
+        answerTextEl.classList.remove("hidden");
+        placeholderTextEl.style.display = "none";
+      } else {
+        answerTextEl.classList.add("hidden");
+        placeholderTextEl.style.display = "block";
+        placeholderTextEl.textContent =
+          "Click the card or press Space to reveal the answer.";
+      }
+
+      const mainTag = card.tags[0] || "Card";
+      cardTopicEl.textContent = mainTag;
+
+      tagListEl.innerHTML = "";
+      card.tags.forEach((t) => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = t;
+        tagListEl.appendChild(span);
+      });
+
+      cardIndexEl.textContent = String(currentIndex + 1);
+      cardTotalEl.textContent = "/ " + filteredCards.length + " cards";
+      totalCountStatEl.textContent = String(cards.length);
+    }
+
+    function setFilter(tag) {
+      if (tag === "all") {
+        filteredCards = [...cards];
+      } else {
+        filteredCards = cards.filter((c) => c.tags.includes(tag));
+      }
+      currentIndex = 0;
+      answerShown = false;
+      renderCard();
+    }
+
+    function shuffleCurrent() {
+      for (let i = filteredCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+      }
+      currentIndex = 0;
+      answerShown = false;
+      renderCard();
+    }
+
+    function nextCard() {
+      if (filteredCards.length === 0) return;
+      currentIndex = (currentIndex + 1) % filteredCards.length;
+      answerShown = false;
+      renderCard();
+    }
+
+    function prevCard() {
+      if (filteredCards.length === 0) return;
+      currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
+      answerShown = false;
+      renderCard();
+    }
+
+    function toggleAnswer() {
+      if (filteredCards.length === 0) return;
+      answerShown = !answerShown;
+      renderCard();
+    }
+
+    topicFilterEl.addEventListener("change", (e) => {
+      setFilter(e.target.value);
+    });
+
+    shuffleBtn.addEventListener("click", () => {
+      shuffleCurrent();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      nextCard();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      prevCard();
+    });
+
+    cardEl.addEventListener("click", () => {
+      toggleAnswer();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        toggleAnswer();
+      } else if (event.code === "ArrowRight") {
+        nextCard();
+      } else if (event.code === "ArrowLeft") {
+        prevCard();
+      }
+    });
+
+    // Initial render
+    renderCard();
+  </script>
+</body>
+</html>
