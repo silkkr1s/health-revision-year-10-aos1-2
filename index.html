@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Year 10 Health Flashcards</title>
+  <title>Year 10 Health Flashcards – S2 Exam Revision</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
@@ -12,11 +12,8 @@
       --accent-soft: rgba(56, 189, 248, 0.15);
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --danger: #f97373;
-      --success: #4ade80;
       --border-subtle: rgba(148, 163, 184, 0.35);
       --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.75);
-      --radius-lg: 1.5rem;
       --radius-full: 999px;
     }
 
@@ -436,12 +433,12 @@
       <div class="title-row">
         <h1>
           Year 10 Health Flashcards
-          <span class="badge">VIC · S2 Exam</span>
+          <span class="badge">10HHD · S2 Exam</span>
         </h1>
       </div>
       <p class="subtitle">
-        Click the card to show or hide the answer. Use the topic filter or shuffle
-        to mix things up. All cards are based on your exam checklist.
+        Based on your 10HHD S2 Checklist + Exam Revision notes. Click the card or press
+        <strong>Space</strong> to flip. Use the topic filter or shuffle to practise like the exam.
       </p>
 
       <div class="controls-row">
@@ -524,17 +521,18 @@
         <div>
           <div class="side-section-title">Quick tips</div>
           <ul class="list">
-            <li>Try to answer out loud before flipping the card.</li>
-            <li>Group similar topics (e.g. all sociocultural factors) and explain them together.</li>
-            <li>Link each answer to a health dimension or indicator of health where you can.</li>
+            <li>Use exam words in your answers (define, describe, explain, analyse, evaluate).</li>
+            <li>Always try to link answers to a <em>dimension</em> or <em>indicator</em> of health.</li>
+            <li>Say your answer out loud before you flip the card.</li>
           </ul>
           <p class="hint-bottom">
-            Exam verbs to watch:
+            Exam verbs:
             <span class="pill-small">define</span>
             <span class="pill-small">describe</span>
             <span class="pill-small">explain</span>
             <span class="pill-small">analyse</span>
             <span class="pill-small">evaluate</span>
+            <span class="pill-small">discuss</span>
           </p>
         </div>
       </aside>
@@ -544,84 +542,144 @@
   <script>
     const cards = [
       // ───────────────────────────
-      // AOS 1 – Dimensions
+      // AOS 1 – Dimensions (match revision sheet)
       // ───────────────────────────
       {
-        question: "What are the five dimensions of health and wellbeing?",
-        answer: "Physical, Mental, Social, Emotional, Spiritual.",
+        question: "Define physical health and wellbeing.",
+        answer: "Relates to the functioning of the body and its systems and the ability to perform daily activities without restriction.",
         tags: ["Dimensions", "AOS1"]
       },
       {
-        question: "Define physical health and wellbeing.",
-        answer: "The functioning of the body and its systems, including the ability to perform daily tasks.",
+        question: "List two characteristics of physical health and wellbeing.",
+        answer: "Healthy body weight, adequate energy levels, a strong immune system, ability to complete physical tasks.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Give an example that shows optimal physical health and wellbeing.",
+        answer: "Regular exercise improves fitness and helps maintain a healthy body weight, supporting physical health and wellbeing.",
         tags: ["Dimensions", "AOS1"]
       },
       {
         question: "Define mental health and wellbeing.",
-        answer: "Relates to the state of a person’s mind, including the ability to think and process information and cope with stress.",
+        answer: "Relates to the state of a person’s mind and their ability to think, process information, maintain self-esteem and manage stress.",
         tags: ["Dimensions", "AOS1"]
       },
       {
-        question: "Define social health and wellbeing.",
-        answer: "Ability to form meaningful and satisfying relationships and adapt to different social situations.",
+        question: "List two characteristics of mental health and wellbeing.",
+        answer: "Confidence and positive self-esteem, low levels of stress, clear and logical thinking, optimistic outlook.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Give an example that supports mental health and wellbeing.",
+        answer: "Practising mindfulness can help reduce stress, supporting optimal mental health and wellbeing.",
         tags: ["Dimensions", "AOS1"]
       },
       {
         question: "Define emotional health and wellbeing.",
-        answer: "Ability to recognise, understand and effectively respond to emotions.",
+        answer: "Relates to the ability to recognise, understand and effectively respond to emotions, and to display resilience.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "List two characteristics of emotional health and wellbeing.",
+        answer: "Ability to express feelings appropriately, resilience, self-control, understanding emotions in self and others.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Give an example that shows good emotional health and wellbeing.",
+        answer: "Staying calm and problem-solving during a conflict shows resilience and supports emotional health and wellbeing.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Define social health and wellbeing.",
+        answer: "Relates to the ability to form meaningful, satisfying relationships and adapt to different social situations.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "List two characteristics of social health and wellbeing.",
+        answer: "Effective communication, supportive friendships, ability to work in teams, respectful relationships.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Give an example that supports social health and wellbeing.",
+        answer: "Having strong support networks improves connection and belonging, promoting optimal social health.",
         tags: ["Dimensions", "AOS1"]
       },
       {
         question: "Define spiritual health and wellbeing.",
-        answer: "Relates to ideas, beliefs, values and ethics, and a sense of purpose, meaning and belonging.",
+        answer: "Relates to ideas, beliefs, values and ethics, and a sense of meaning and purpose in life.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "List two characteristics of spiritual health and wellbeing.",
+        answer: "Sense of belonging, connection, purpose, inner peace, alignment with personal values.",
+        tags: ["Dimensions", "AOS1"]
+      },
+      {
+        question: "Give an example that supports spiritual health and wellbeing.",
+        answer: "Setting personal goals can increase a sense of purpose, supporting spiritual health and wellbeing.",
         tags: ["Dimensions", "AOS1"]
       },
 
       // ───────────────────────────
-      // AOS 1 – Prerequisites
+      // AOS 1 – Prerequisites of health
       // ───────────────────────────
       {
-        question: "List the eight prerequisites of health and wellbeing.",
-        answer: "Peace, Shelter, Equity, Education, Income, Social justice, Sustainable resources, Stable ecosystem.",
+        question: "What are prerequisites for health according to the WHO?",
+        answer: "Fundamental conditions such as peace, shelter, education and income that enable people to achieve optimal health.",
         tags: ["Prerequisites", "AOS1"]
       },
       {
-        question: "Explain how education supports optimal health and wellbeing.",
-        answer: "Education increases health literacy and job opportunities, supporting income, access to healthcare and better decision making.",
+        question: "List the eight prerequisites for health you must know.",
+        answer: "Peace, Shelter, Education, Income, Stable ecosystem, Sustainable resources, Social justice, Equity.",
         tags: ["Prerequisites", "AOS1"]
       },
       {
-        question: "Explain how income promotes health and wellbeing.",
-        answer: "Income enables access to nutritious food, healthcare, transport and safe housing, improving physical and mental health.",
+        question: "Explain how peace can improve physical and mental health and wellbeing.",
+        answer: "Peace reduces risk of violence, injury and displacement. Feeling safe reduces stress and anxiety and supports physical functioning.",
         tags: ["Prerequisites", "AOS1"]
       },
       {
-        question: "Explain how peace supports health and wellbeing.",
-        answer: "Peace reduces risk of injury and death from conflict and lowers stress and anxiety, improving physical and mental health.",
+        question: "Explain how shelter links to physical and social health and wellbeing.",
+        answer: "Shelter provides protection from weather and disease and stable housing supports school attendance and forming relationships.",
         tags: ["Prerequisites", "AOS1"]
       },
       {
-        question: "How do sustainable resources support health and wellbeing?",
-        answer: "They ensure ongoing access to food, water and energy for current and future generations, supporting physical health and reduced stress.",
+        question: "Explain how education supports youth health and wellbeing.",
+        answer: "Education builds health literacy, confidence and employment opportunities, helping young people make informed, healthy choices.",
+        tags: ["Prerequisites", "AOS1"]
+      },
+      {
+        question: "Explain how income can influence physical and social health and wellbeing for youth.",
+        answer: "Income allows access to healthcare, nutritious food and sport, supporting physical health and participation in social activities.",
         tags: ["Prerequisites", "AOS1"]
       },
 
       // ───────────────────────────
-      // AOS 1 – Health status
+      // AOS 1 – Health status indicators
       // ───────────────────────────
       {
+        question: "Define health status indicators.",
+        answer: "Measures that describe the level of health in individuals or populations, such as mortality and morbidity.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
         question: "Define mortality.",
-        answer: "The number of deaths in a population in a given time.",
+        answer: "Death in a population, usually measured as the number of deaths per 100,000 people.",
+        tags: ["Health Status", "AOS1"]
+      },
+      {
+        question: "Define life expectancy.",
+        answer: "The average number of years a person is expected to live if current death rates continue.",
         tags: ["Health Status", "AOS1"]
       },
       {
         question: "Define morbidity.",
-        answer: "The level of illness, disease or injury in a population.",
+        answer: "Ill health in an individual, or levels of disease or injury in a population.",
         tags: ["Health Status", "AOS1"]
       },
       {
         question: "Define incidence.",
-        answer: "The number of new cases of a condition in a given time.",
+        answer: "The number of new cases of a condition during a specific period of time.",
         tags: ["Health Status", "AOS1"]
       },
       {
@@ -630,13 +688,13 @@
         tags: ["Health Status", "AOS1"]
       },
       {
-        question: "What is burden of disease measured in?",
-        answer: "Disability Adjusted Life Years (DALYs), a combination of years of life lost and years lived with disability.",
+        question: "Define burden of disease and DALYs.",
+        answer: "Burden of disease measures the impact of disease and injury using DALYs, which combine years of life lost (YLL) and years lived with disability (YLD).",
         tags: ["Health Status", "AOS1"]
       },
       {
-        question: "What is self-assessed health status?",
-        answer: "An overall measure based on a person’s own perception of their health.",
+        question: "Define self-assessed health status.",
+        answer: "How individuals rate their own health, based on perceptions of their physical, social, mental, emotional and spiritual wellbeing.",
         tags: ["Health Status", "AOS1"]
       },
 
@@ -644,225 +702,326 @@
       // AOS 1 – Sociocultural factors
       // ───────────────────────────
       {
-        question: "Name five sociocultural factors that influence youth health and wellbeing.",
-        answer: "Peer groups, Family, Education, Income, Health literacy.",
+        question: "What are sociocultural factors?",
+        answer: "The social and cultural conditions a person is born into and lives in that influence behaviours and health outcomes.",
         tags: ["Sociocultural", "AOS1"]
       },
       {
-        question: "How can peer groups negatively influence youth health and wellbeing?",
-        answer: "Peers may encourage risky behaviours like alcohol use, smoking or unsafe driving, increasing morbidity and injury.",
+        question: "List five sociocultural factors that affect youth health and wellbeing.",
+        answer: "Family, Peer groups, Education, Income, Health literacy.",
         tags: ["Sociocultural", "AOS1"]
       },
       {
-        question: "How does family influence health and wellbeing?",
-        answer: "Family provides support, role modelling and rules that shape behaviours such as diet, activity and help-seeking.",
+        question: "Explain how family can promote youth health and wellbeing.",
+        answer: "Supportive families role model healthy behaviours and encourage exercise, healthy eating and help-seeking, improving physical and mental health.",
         tags: ["Sociocultural", "AOS1"]
       },
       {
-        question: "Explain how health literacy can affect health.",
-        answer: "Higher health literacy means a person can access, understand and use health information to make healthier choices.",
+        question: "Explain how a negative family environment can reduce youth health and wellbeing.",
+        answer: "Conflict or instability can increase stress, risk-taking and poor coping, harming emotional and mental health.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "Explain how peer groups can positively influence youth health.",
+        answer: "Positive peers encourage sport, belonging and confidence, strengthening physical, social and mental health and wellbeing.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "Explain how peer groups can negatively influence youth health.",
+        answer: "Peers may encourage risk-taking such as vaping or binge drinking, increasing injury, anxiety and disease among youth.",
+        tags: ["Sociocultural", "AOS1"]
+      },
+      {
+        question: "How can low health literacy affect dietary choices?",
+        answer: "A young person with low health literacy may struggle to understand food labels and nutrition advice, leading to poor food choices.",
         tags: ["Sociocultural", "AOS1"]
       },
 
       // ───────────────────────────
-      // AOS 1 – Sexuality & fertilisation
+      // AOS 1 – Respectful relationships & consent
       // ───────────────────────────
       {
-        question: "Outline the basic process of fertilisation.",
-        answer: "A sperm cell penetrates an ovum, and their genetic material combines to form a zygote.",
+        question: "List the key characteristics of a respectful relationship.",
+        answer: "Respect, trust, honesty, loyalty, empathy, safety and equality.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "Explain how respectful relationships support emotional health and wellbeing.",
+        answer: "Feeling valued and understood reduces stress and builds resilience, supporting emotional health.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "Explain how respectful relationships support mental health and wellbeing.",
+        answer: "Trust and honesty can boost self-esteem and reduce anxiety, improving mental health.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "Explain how respectful relationships support social health and wellbeing.",
+        answer: "Good communication and equality strengthen connection and belonging, improving social health.",
+        tags: ["Relationships", "AOS1"]
+      },
+      {
+        question: "Explain how respectful relationships support physical health and wellbeing.",
+        answer: "Safety reduces risk of physical harm or violence, protecting physical health.",
+        tags: ["Relationships", "AOS1"]
+      },
+
+      // ───────────────────────────
+      // AOS 1 – Fertilisation
+      // ───────────────────────────
+      {
+        question: "Describe the process of fertilisation.",
+        answer: "A sperm cell reaches and penetrates an ovum; their genetic material combines to form a zygote, which can then implant and develop.",
         tags: ["Sexuality", "AOS1"]
       },
 
       // ───────────────────────────
-      // AOS 1 – Consent & relationships
+      // AOS 1 – Alcohol & drugs (depressants)
       // ───────────────────────────
       {
-        question: "List the characteristics of a respectful relationship.",
-        answer: "Respect, Trust, Honesty, Loyalty, Empathy, Safety, Equality.",
-        tags: ["Relationships", "AOS1"]
-      },
-      {
-        question: "How does equality in a relationship support health and wellbeing?",
-        answer: "Both people feel valued and heard, which improves emotional and mental health and reduces stress.",
-        tags: ["Relationships", "AOS1"]
-      },
-      {
-        question: "How does safety in a relationship link to health and wellbeing?",
-        answer: "Physical and emotional safety reduces risk of injury and lowers anxiety and fear.",
-        tags: ["Relationships", "AOS1"]
-      },
-
-      // ───────────────────────────
-      // AOS 1 – Alcohol and drugs
-      // ───────────────────────────
-      {
-        question: "What are the three main types of drugs by effect on the CNS?",
-        answer: "Stimulants, Depressants, Hallucinogens.",
+        question: "What is a depressant drug and give one example.",
+        answer: "A depressant slows down the central nervous system. An example is alcohol.",
         tags: ["Alcohol & Drugs", "AOS1"]
       },
       {
-        question: "Give an example of a depressant and its short term impact.",
-        answer: "Alcohol – slows reaction time and impairs judgement, increasing risk of accidents and injury.",
+        question: "Explain how alcohol (a depressant) can impact youth health status.",
+        answer: "Alcohol reduces coordination and judgement, increasing injuries and accidents and raising youth morbidity and mortality.",
         tags: ["Alcohol & Drugs", "AOS1"]
       },
       {
-        question: "How can alcohol use affect an indicator of health status?",
-        answer: "Increases incidence and mortality from road trauma and liver disease, contributing to the burden of disease.",
+        question: "Name three main types of drugs based on their effect on the CNS.",
+        answer: "Stimulants, depressants and hallucinogens.",
         tags: ["Alcohol & Drugs", "AOS1"]
       },
 
       // ───────────────────────────
-      // AOS 2 – Macronutrients
+      // AOS 2 – Macronutrients (use teacher wording)
       // ───────────────────────────
       {
-        question: "What is the main function of carbohydrates?",
-        answer: "To provide the body with energy, especially for daily activities and brain function.",
+        question: "What is the difference between macronutrients and micronutrients?",
+        answer: "Macronutrients are needed in large amounts (carbohydrates, protein, fats). Micronutrients are needed in small amounts (vitamins and minerals).",
         tags: ["Macronutrients", "AOS2"]
       },
       {
-        question: "What is the function of fibre?",
-        answer: "Adds bulk to faeces, helps regulate bowel movements and reduces risk of constipation.",
+        question: "Why do we need both macro and micronutrients?",
+        answer: "Together they provide essential nourishment for growth, development and efficient body functioning.",
         tags: ["Macronutrients", "AOS2"]
       },
       {
-        question: "What is the main function of protein?",
-        answer: "Growth, maintenance and repair of body tissues, and can be used as a secondary energy source.",
+        question: "Describe the function of carbohydrates during youth.",
+        answer: "They provide the body’s main source of fuel to support rapid growth and high metabolism during youth.",
         tags: ["Macronutrients", "AOS2"]
       },
       {
-        question: "What is the function of fats?",
-        answer: "Provide a concentrated source of energy, protect organs, insulate the body and form cell membranes.",
+        question: "What happens to carbohydrates in the body?",
+        answer: "Carbohydrates are broken down to glucose, stored as glycogen and used as fuel for energy production.",
         tags: ["Macronutrients", "AOS2"]
       },
       {
-        question: "Name two food sources of unsaturated fats.",
-        answer: "Avocado, nuts, seeds, olive oil or oily fish such as salmon.",
+        question: "What can happen if a young person consumes too many carbohydrates?",
+        answer: "Excess carbohydrate intake can lead to overweight, obesity and higher risk of cardiovascular disease and type 2 diabetes.",
         tags: ["Macronutrients", "AOS2"]
       },
       {
-        question: "Name two food sources of saturated fats.",
-        answer: "Butter, fatty cuts of meat, full cream milk, cheese or deep-fried foods.",
+        question: "Describe the role of fibre.",
+        answer: "Fibre moves through the digestive system, helping to slow digestion, manage weight, reduce cholesterol and prevent constipation.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Explain how fibre helps reduce the risk of cardiovascular disease.",
+        answer: "Fibre can bind with cholesterol and help remove it, lowering blood cholesterol and cardiovascular disease risk.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Explain how fibre helps prevent constipation.",
+        answer: "Fibre absorbs water and adds bulk to waste, promoting regular bowel movements and reducing risk of colorectal cancer.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Describe the main role of protein in youth.",
+        answer: "Protein builds, maintains and repairs body cells, which is critical for growth and development during youth.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "List two functions of protein apart from growth.",
+        answer: "Acts as a secondary energy source when carbohydrates are low and helps build and repair muscles and connective tissues.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "What can happen if protein is consumed in excess?",
+        answer: "Too much protein can contribute to a positive energy balance and unwanted weight gain.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "Describe two key functions of fats in the body.",
+        answer: "Fats act as a fuel for energy and support hormone production, brain function and heart and blood vessel health.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "How do unsaturated fats influence cardiovascular health?",
+        answer: "Unsaturated fats can lower LDL cholesterol and reduce the risk of cardiovascular disease.",
+        tags: ["Macronutrients", "AOS2"]
+      },
+      {
+        question: "How do saturated and trans fats affect health?",
+        answer: "They can increase LDL cholesterol, blood cholesterol levels and the risk of cardiovascular disease and type 2 diabetes.",
         tags: ["Macronutrients", "AOS2"]
       },
 
       // ───────────────────────────
-      // AOS 2 – Minerals & vitamins
+      // AOS 2 – Minerals (water, calcium, sodium, iron)
       // ───────────────────────────
       {
-        question: "What is the function of iron in the body?",
-        answer: "Forms haemoglobin in red blood cells so oxygen can be transported around the body.",
+        question: "What are minerals and why are they important?",
+        answer: "Minerals are inorganic substances that help build bones, support nerve function and maintain a healthy heart and other vital functions.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
       {
-        question: "List two food sources of iron.",
-        answer: "Red meat, beans, lentils, spinach or fortified cereals.",
+        question: "Describe the main function of calcium.",
+        answer: "Calcium supports bone formation and builds hard tissues such as cartilage and teeth, especially important during growth in youth.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
       {
-        question: "What is the function of folate?",
-        answer: "Needed for DNA synthesis and cell division, important for growth and development.",
+        question: "Explain how adequate calcium intake supports youth development.",
+        answer: "It helps achieve peak bone mass, reducing the risk of fractures and osteoporosis later in life.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
       {
-        question: "Name two food sources of folate.",
-        answer: "Green leafy vegetables, citrus fruits, legumes and fortified breads or cereals.",
+        question: "Describe the main function of sodium in the body.",
+        answer: "Sodium helps regulate fluid movement in and out of cells and assists in controlling blood pressure when consumed in moderation.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
       {
-        question: "What is the function of vitamin D?",
-        answer: "Helps the body absorb calcium from the intestine, supporting bone health.",
+        question: "Explain the consequences of overconsuming sodium.",
+        answer: "Too much sodium can increase blood volume and blood pressure, raising the risk of cardiovascular disease, heart attack and stroke.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
       {
-        question: "What is the function of vitamin C?",
-        answer: "Important for collagen formation, wound healing and immune system function.",
+        question: "Describe the role of iron in youth.",
+        answer: "Iron is needed for red blood cell formation and adequate blood volume, especially important for menstruating females.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "What happens if a young person does not consume enough iron?",
+        answer: "Low iron can reduce red blood cell production, lowering oxygen transport and causing tiredness, weakness and anaemia.",
         tags: ["Minerals & Vitamins", "AOS2"]
       },
 
       // ───────────────────────────
-      // AOS 2 – Nutritional imbalances
+      // AOS 2 – Vitamins (C, D, Folate)
       // ───────────────────────────
       {
-        question: "Short term impacts of high sodium intake?",
-        answer: "Can cause high blood pressure, fluid retention and increased thirst.",
+        question: "What are vitamins?",
+        answer: "Organic compounds needed in small amounts for functions such as growth, immunity and metabolism.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Describe two functions of vitamin C.",
+        answer: "Supports immune function and helps form blood vessels and connective tissue such as bones, cartilage and ligaments.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Why must vitamin C be consumed regularly?",
+        answer: "Vitamin C is not stored in the body for long, so it must be consumed frequently in the diet.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Describe the main function of vitamin D.",
+        answer: "Vitamin D helps the body absorb calcium from the intestine into the bloodstream, supporting bone health.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "How does vitamin D link to a dimension of health and wellbeing?",
+        answer: "By improving calcium absorption and bone strength, vitamin D supports physical health and wellbeing.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Describe the role of folate (vitamin B9).",
+        answer: "Folate assists in DNA synthesis, cell duplication and red blood cell development.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+      {
+        question: "Explain why folate is especially important during youth.",
+        answer: "Youth experience rapid growth and development, so they need more cell production and red blood cell formation.",
+        tags: ["Minerals & Vitamins", "AOS2"]
+      },
+
+      // ───────────────────────────
+      // AOS 2 – Nutritional imbalances (short & long term)
+      // (some already covered above, but tagged for this topic)
+      // ───────────────────────────
+      {
+        question: "Short-term consequence of a high sodium diet for youth.",
+        answer: "Can cause increased blood pressure and fluid retention, leading to headaches or swelling.",
         tags: ["Nutritional Imbalances", "AOS2"]
       },
       {
-        question: "Long term impacts of high sodium intake?",
-        answer: "Increases risk of hypertension, heart attack and stroke (cardiovascular disease).",
+        question: "Long-term consequence of a high sodium diet.",
+        answer: "Can lead to chronic high blood pressure and increased risk of heart attack and stroke.",
         tags: ["Nutritional Imbalances", "AOS2"]
       },
       {
-        question: "Long term impact of high saturated fat intake?",
-        answer: "Raises LDL cholesterol, increases risk of atherosclerosis and coronary heart disease.",
+        question: "Explain how a high trans fat diet can increase the risk of type 2 diabetes.",
+        answer: "Trans fats can raise LDL cholesterol and contribute to insulin resistance, which over time increases the risk of type 2 diabetes.",
         tags: ["Nutritional Imbalances", "AOS2"]
       },
       {
-        question: "How can family as a sociocultural factor influence diet?",
-        answer: "Family controls food availability and role models eating patterns, which can encourage healthy or unhealthy choices.",
-        tags: ["Nutritional Imbalances", "AOS2"]
-      },
-      {
-        question: "Give two examples of lifestyle diseases linked to poor diet.",
-        answer: "Cardiovascular disease and coronary heart disease.",
+        question: "Explain why it is important for youth to consume a protein-rich diet.",
+        answer: "Protein supports growth, muscle and tissue repair and helps youth cope with rapid physical development.",
         tags: ["Nutritional Imbalances", "AOS2"]
       },
 
       // ───────────────────────────
-      // AOS 2 – Food selection models
+      // AOS 2 – Food selection models (just key ideas)
+      // (your revision doc hints at AGHE & HSR; checklist confirms)
       // ───────────────────────────
       {
         question: "What is the aim of the Australian Guide to Healthy Eating (AGHE)?",
-        answer: "To show the proportions of the five food groups needed each day for a balanced diet and to help prevent diet related diseases.",
+        answer: "To show the recommended proportions of the five food groups needed each day to support health and reduce lifestyle disease risk.",
         tags: ["Food Selection Models", "AOS2"]
       },
       {
-        question: "Name the five food groups shown in the AGHE.",
-        answer: "Vegetables and legumes, Fruit, Grain (cereal) foods, Lean meats and alternatives, Milk, yoghurt, cheese and alternatives.",
-        tags: ["Food Selection Models", "AOS2"]
-      },
-      {
-        question: "How does the AGHE help address lifestyle diseases?",
-        answer: "Encourages high intake of plant foods and limits discretionary foods, helping reduce obesity and cardiovascular disease risk.",
+        question: "Name the five food groups in the AGHE.",
+        answer: "Vegetables and legumes, fruit, grain (cereal) foods, lean meats and alternatives, milk, yoghurt, cheese and alternatives.",
         tags: ["Food Selection Models", "AOS2"]
       },
       {
         question: "What is the aim of the Health Star Rating system?",
-        answer: "To provide a quick way to compare the overall nutritional profile of packaged foods using a 0.5 to 5 star rating.",
+        answer: "To provide a quick, front-of-pack rating from 0.5 to 5 stars so people can compare the nutritional profile of similar packaged foods.",
         tags: ["Food Selection Models", "AOS2"]
       },
       {
-        question: "Give one strength of the Health Star Rating system.",
-        answer: "Easy and fast to compare similar packaged foods and choose the healthier option.",
-        tags: ["Food Selection Models", "AOS2"]
-      },
-      {
-        question: "Give one weakness of the Health Star Rating system.",
-        answer: "Only appears on some packaged foods and does not always reflect whole diet quality.",
+        question: "Give one strength and one weakness of the Health Star Rating system.",
+        answer: "Strength: makes it easy to compare similar packaged foods. Weakness: not on all foods and does not show overall diet quality.",
         tags: ["Food Selection Models", "AOS2"]
       },
 
       // ───────────────────────────
-      // AOS 3 – Health Expo
+      // AOS 3 – Health Expo (variables & links)
       // ───────────────────────────
       {
         question: "Define independent variable in an experiment.",
-        answer: "The variable that is changed or controlled by the researcher to see its effect.",
+        answer: "The variable that is changed or manipulated by the researcher.",
         tags: ["Health Expo", "AOS3"]
       },
       {
         question: "Define dependent variable in an experiment.",
-        answer: "The variable that is measured in response to changes in the independent variable.",
+        answer: "The variable that is measured to see the effect of changes in the independent variable.",
         tags: ["Health Expo", "AOS3"]
       },
       {
-        question: "How could a change in physical activity (independent variable) impact a dimension of health and wellbeing?",
-        answer: "Increased physical activity can improve physical health and wellbeing by strengthening the heart and muscles.",
+        question: "Give an example of an independent and dependent variable in a health expo experiment.",
+        answer: "Independent variable: minutes of daily physical activity. Dependent variable: resting heart rate or time to run 1 km.",
         tags: ["Health Expo", "AOS3"]
       },
       {
-        question: "How could a change in diet impact an indicator of health status?",
-        answer: "Improved diet can lower incidence and prevalence of obesity and cardiovascular disease, reducing burden of disease.",
+        question: "Explain how changing physical activity levels can impact a dimension of health and wellbeing.",
+        answer: "Increasing physical activity can improve fitness and energy levels, supporting physical health and wellbeing.",
+        tags: ["Health Expo", "AOS3"]
+      },
+      {
+        question: "Explain how diet changes could impact an indicator of health status.",
+        answer: "Improving diet can lower incidence and prevalence of obesity and type 2 diabetes, reducing the burden of disease.",
         tags: ["Health Expo", "AOS3"]
       }
     ];
@@ -890,11 +1049,13 @@
         questionTextEl.textContent = "No cards found for this topic.";
         answerTextEl.textContent = "";
         answerTextEl.classList.add("hidden");
+        placeholderTextEl.style.display = "block";
         placeholderTextEl.textContent = "Change the topic filter to see cards.";
         cardTopicEl.textContent = "No cards";
         tagListEl.innerHTML = "";
         cardIndexEl.textContent = "0";
         cardTotalEl.textContent = "/ 0 cards";
+        totalCountStatEl.textContent = String(cards.length);
         return;
       }
 
@@ -909,7 +1070,7 @@
         answerTextEl.classList.add("hidden");
         placeholderTextEl.style.display = "block";
         placeholderTextEl.textContent =
-          "Click the card or press Space to reveal the answer.";
+          "Think of your answer, then click the card or press Space to reveal.";
       }
 
       const mainTag = card.tags[0] || "Card";
